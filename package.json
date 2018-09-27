@@ -17,5 +17,11 @@
   "bugs": {
     "url": "https://github.com/rudenate3/hangman-client/issues"
   },
-  "homepage": "https://github.com/rudenate3/hangman-client#readme"
+  "homepage": "https://github.com/rudenate3/hangman-client#readme",
+  "dependencies": {
+    "@uirouter/angularjs": "^1.0.20",
+    "angular": "^1.7.4",
+    "aws-amplify": "^1.1.4",
+    "bootstrap": "^4.1.3"
+  }
 }
