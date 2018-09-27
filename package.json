@@ -1,0 +1,21 @@
+{
+  "name": "hangman-client",
+  "version": "1.0.0",
+  "description": "AngularJS Front end for Hangman",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rudenate3/hangman-client.git"
+  },
+  "keywords": [
+    "angularjs",
+    "game",
+    "hangman"
+  ],
+  "author": "rudenate3",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rudenate3/hangman-client/issues"
+  },
+  "homepage": "https://github.com/rudenate3/hangman-client#readme"
+}
