@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="hangman">
 
 <head>
   <meta charset="UTF-8">
@@ -17,6 +17,9 @@
   <script src="./node_modules/amazon-cognito-identity-js/dist/amazon-cognito-identity.js"></script>
 
   <script src="./src/app.js"></script>
+  <script src="./src/components/pages/home.component.js"></script>
+  <script src="./src/components/pages/login.component.js"></script>
+  <script src="./src/components/pages/register.component.js"></script>
 </head>
 
 <body>
@@ -30,22 +33,23 @@
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link">Home</a>
+          <a class="nav-link" ui-sref="home" ui-sref-active="active">Home</a>
         </li>
       </ul>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link">Login</a>
+          <a class="nav-link" ui-sref="login" ui-sref-active="active">Login</a>
 
         </li>
         <li class="nav-item">
-          <a class="nav-link">Register</a>
+          <a class="nav-link" ui-sref="register" ui-sref-active="active">Register</a>
         </li>
       </ul>
     </div>
   </nav>
 
   <div class="container mt-5 p-5">
+    <ui-view></ui-view>
   </div>
 </body>
 
