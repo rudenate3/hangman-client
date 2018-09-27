@@ -1,3 +1,12 @@
 angular.module('hangman').component('register', {
-  template: '<h1>Register</h1>'
+  templateUrl: '/src/components/pages/templates/register.tmpl.html',
+  controller: function(Auth) {
+    this.submit = user => {
+      if (user.password !== user.confirm) {
+        console.log('does not match')
+        return
+      }
+      Auth.register(user.email, user.username, user.password)
+    }
+  }
 })
