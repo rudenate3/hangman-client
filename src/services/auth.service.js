@@ -1,3 +1,5 @@
+'use strict'
+
 angular
   .module('hangman')
   .factory('Auth', function Auth($location, $rootScope, config) {
@@ -52,6 +54,17 @@ angular
             console.error(err)
           }
         })
+      },
+      isLoggedIn: function() {
+        const cognitoUser = userPool.getCurrentUser()
+
+        if (cognitoUser != null) {
+          cognitoUser.getSession(function(err, session) {
+            if (err) console.error(err)
+            return session.isValid()
+          })
+        }
+        return false
       }
     }
   })

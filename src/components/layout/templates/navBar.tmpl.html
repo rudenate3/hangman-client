@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+  <a class="navbar-brand" href="#">Hangman</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+    aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" ui-sref="home" ui-sref-active="active">Home</a>
+      </li>
+    </ul>
+    <ul ng-if="$ctrl.loggedIn" class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" ui-sref="login" ui-sref-active="active">Login</a>
+
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" ui-sref="register" ui-sref-active="active">Register</a>
+      </li>
+    </ul>
+  </div>
+</nav>

@@ -1,3 +1,5 @@
+'use strict'
+
 angular.module('hangman').component('register', {
   templateUrl: '/src/components/pages/templates/register.tmpl.html',
   controller: function(Auth) {
