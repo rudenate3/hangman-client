@@ -28,6 +28,30 @@ angular
             if (!$rootScope.$$phase) $rootScope.$apply()
           }
         })
+      },
+      login: function(username, password) {
+        const authenticationData = {
+            Username: username,
+            Password: password
+          },
+          authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails(
+            authenticationData
+          ),
+          userData = {
+            Username: username,
+            Pool: userPool
+          },
+          cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData)
+
+        cognitoUser.authenticateUser(authenticationDetails, {
+          onSuccess: function(result) {
+            $location.path('/').replace()
+            if (!$rootScope.$$phase) $rootScope.$apply()
+          },
+          onFailure: function(err) {
+            console.error(err)
+          }
+        })
       }
     }
   })

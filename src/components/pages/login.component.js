@@ -1,3 +1,8 @@
 angular.module('hangman').component('login', {
-  template: '<h1>Login</h1>'
+  templateUrl: '/src/components/pages/templates/login.tmpl.html',
+  controller: function(Auth) {
+    this.submit = user => {
+      Auth.login(user.username, user.password)
+    }
+  }
 })
