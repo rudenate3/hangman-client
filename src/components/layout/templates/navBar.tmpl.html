@@ -11,13 +11,18 @@
         <a class="nav-link" ui-sref="home" ui-sref-active="active">Home</a>
       </li>
     </ul>
-    <ul ng-if="$ctrl.loggedIn" class="navbar-nav ml-auto">
+    <ul ng-show="!$ctrl.isLoggedIn" class="navbar-nav ml-auto">
       <li class="nav-item">
         <a class="nav-link" ui-sref="login" ui-sref-active="active">Login</a>
 
       </li>
       <li class="nav-item">
         <a class="nav-link" ui-sref="register" ui-sref-active="active">Register</a>
+      </li>
+    </ul>
+    <ul ng-show="$ctrl.isLoggedIn" class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" ng-click="$ctrl.onLogoutClick()">Logout</a>
       </li>
     </ul>
   </div>

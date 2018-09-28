@@ -8,6 +8,18 @@ angular
       ClientId: config.clientId
     })
 
+    $rootScope.loggedIn = false
+
+    const cognitoUser = userPool.getCurrentUser()
+
+    if (cognitoUser != null) {
+      cognitoUser.getSession(function(err, session) {
+        if (err) console.error(err)
+        $rootScope.loggedIn = session.isValid()
+        $rootScope.$broadcast('authStateChange')
+      })
+    }
+
     return {
       register: function(email, username, password) {
         const attribute = {
@@ -47,6 +59,8 @@ angular
 
         cognitoUser.authenticateUser(authenticationDetails, {
           onSuccess: function(result) {
+            $rootScope.loggedIn = true
+            $rootScope.$broadcast('authStateChange')
             $location.path('/').replace()
             if (!$rootScope.$$phase) $rootScope.$apply()
           },
@@ -55,16 +69,14 @@ angular
           }
         })
       },
-      isLoggedIn: function() {
+      logout: function() {
         const cognitoUser = userPool.getCurrentUser()
 
         if (cognitoUser != null) {
-          cognitoUser.getSession(function(err, session) {
-            if (err) console.error(err)
-            return session.isValid()
-          })
+          $rootScope.loggedIn = false
+          $rootScope.$broadcast('authStateChange')
+          cognitoUser.signOut()
         }
-        return false
       }
     }
   })
