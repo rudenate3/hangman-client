@@ -18,6 +18,10 @@ angular
         url: '/register',
         template: '<register></register>'
       })
+      .state('changePassword', {
+        url: '/change-password',
+        template: '<change-password></change-password>'
+      })
   })
   .config([
     '$locationProvider',
@@ -25,3 +29,18 @@ angular
       $locationProvider.html5Mode(true)
     }
   ])
+  .config(function($httpProvider) {
+    $httpProvider.interceptors.push('authInterceptor')
+  })
+  .factory('authInterceptor', function($rootScope, Auth) {
+    return {
+      // Add authorization token to headers
+      request: function(config) {
+        config.headers = config.headers || {}
+        if (Auth.getAccessToken()) {
+          config.headers.Authorization = Auth.getAccessToken()
+        }
+        return config
+      }
+    }
+  })
