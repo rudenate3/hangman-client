@@ -77,6 +77,36 @@ angular
           $rootScope.$broadcast('authStateChange')
           cognitoUser.signOut()
         }
+      },
+      changePassword: function(oldPassword, newPassword) {
+        const userToChange = userPool.getCurrentUser()
+
+        console.log(userToChange)
+        if (userToChange != null) {
+          userToChange.changePassword(oldPassword, newPassword, function(
+            err,
+            result
+          ) {
+            if (err) console.error(err)
+            if (result) {
+              $location.path('/').replace()
+              if (!$rootScope.$$phase) $rootScope.$apply()
+            }
+          })
+        }
+      },
+      getAccessToken: function() {
+        const cognitoUser = userPool.getCurrentUser()
+
+        if (cognitoUser != null) {
+          return cognitoUser.getSession(function(err, session) {
+            if (err) {
+              alert(err)
+              return null
+            }
+            return session.idToken.jwtToken
+          })
+        }
       }
     }
   })
