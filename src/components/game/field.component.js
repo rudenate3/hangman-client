@@ -2,7 +2,7 @@
 
 angular.module('hangman').component('field', {
   templateUrl: '/src/components/game/templates/field.tmpl.html',
-  controller: function () {
-
+  bindings: {
+    letter: '='
   }
 })

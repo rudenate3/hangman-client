@@ -4,9 +4,8 @@
   </div>
   <div class="card-body">
     <div class="game">
-      <guess ng-repeat="guess in $ctrl.gameState.guesses" letter="guess"></guess>
-      {{ $ctrl.gameState.guesses}}
-      <pre>gameState = {{$ctrl.gameState | json}}</pre>
+      <guess ng-repeat="guess in $ctrl.gameState.incorrectGuesses" letter="guess"></guess>
+      <field ng-repeat="letter in $ctrl.correctFields track by $index" letter="letter"></field>
     </div>
   </div>
   <div ng-show="!$ctrl.gameState.gameOver" class="card-footer">
