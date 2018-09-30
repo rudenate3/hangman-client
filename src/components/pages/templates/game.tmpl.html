@@ -10,7 +10,7 @@
   </div>
   <div ng-show="!$ctrl.gameState.gameOver" class="card-footer">
     <input type="text" class="form-control" ng-model="$ctrl.guessInput">
-    <button ng-click="$ctrl.submitInput($ctrl.guessInput)" class="btn btn-primary">Update</button>
+    <button ng-click="$ctrl.submitInput($ctrl.guessInput)" class="btn btn-primary">Guess</button>
   </div>
   <div ng-show="$ctrl.gameState.gameOver" class="card-footer">
     <button ng-click="$ctrl.newGame()" class="btn btn-primary">Play Again</button>

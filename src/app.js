@@ -26,6 +26,10 @@ angular
         url: '/game',
         template: '<game></game>'
       })
+      .state('history', {
+        url: '/history',
+        template: '<history></history>'
+      })
   })
   .config([
     '$locationProvider',

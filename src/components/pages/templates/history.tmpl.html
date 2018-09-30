@@ -1,0 +1,18 @@
+<div class="card">
+  <div class="card-header bg-dark text-white text-center">
+    History
+  </div>
+  <div class="card-body">
+    <div ng-repeat="game in $ctrl.games">
+      <div class="card m-1 text-white" ng-class="{'bg-success': game.win, 'bg-danger': !game.win}">
+        <div class="card-header text-center">
+          {{game.win ? 'Win' : 'Lose'}}
+        </div>
+        <div class="card-body">
+          <h3>Correct Guesses: </h3><span class="m-2" ng-repeat="guess in game.correctGuesses">{{guess}}</span>
+          <h3>Incorrect Guesses: </h3><span class="m-2" ng-repeat="guess in game.incorrectGuesses">{{guess}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
