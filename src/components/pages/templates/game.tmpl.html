@@ -3,6 +3,11 @@
     Game
   </div>
   <div class="card-body">
-    <div class="game"></div>
+    <div class="game">
+      <pre>gameState = {{$ctrl.gameState | json}}</pre>
+    </div>
+  </div>
+  <div class="card-footer">
+    <button ng-click="$ctrl.submitInput()" class="btn btn-primary">Update</button>
   </div>
 </div>

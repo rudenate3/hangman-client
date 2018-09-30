@@ -3,22 +3,17 @@
 angular.module('hangman').factory('Game', function($http, config) {
   return {
     playGame: function() {
-      $http({
+      return $http({
         method: 'GET',
         url: `${config.apiUrl}/game`
-      }).then(
-        response => {
-          console.log(response)
-        },
-        err => {
-          console.error(err)
-        }
-      )
+      })
     },
-    attemptMove: function() {
-      $http({
+    attemptMove: function(id, move) {
+      return $http({
         method: 'PUT',
-        url: `${config.apiUrl}/move`
+        url: `${config.apiUrl}/move/${id}`,
+        contentType: 'application/json; charset=utf-8',
+        data: move
       }).then(
         response => {
           console.log(response)
@@ -34,7 +29,7 @@ angular.module('hangman').factory('Game', function($http, config) {
         url: `${config.apiUrl}/history`
       }).then(
         response => {
-          console.log(response)
+          return response
         },
         err => {
           console.error(err)
