@@ -2,24 +2,26 @@
   <div class="card-header bg-dark text-white text-center">
     Game
   </div>
-  <div class="card-body">
+  <div class="card-body m-auto">
     <div class="game">
       <div class="row">
-        <div class="col-md-6">
-          <guess ng-repeat="guess in $ctrl.gameState.incorrectGuesses" letter="guess"></guess>
-          <field ng-repeat="letter in $ctrl.correctFields track by $index" letter="letter"></field>
-        </div>
-        <div class="col-md-6">
+        <div class="col-md-12">
           <img ng-src="{{ $ctrl.imageUrl}}">
         </div>
       </div>
+      <div class="row">
+        <field ng-repeat="letter in $ctrl.correctFields track by $index" letter="letter"></field>
+      </div>
+      <div class="row">
+        <guess ng-repeat="guess in $ctrl.gameState.incorrectGuesses" letter="guess"></guess>
+      </div>
     </div>
   </div>
-  <div ng-show="!$ctrl.gameState.gameOver" class="card-footer">
+  <div ng-show="!$ctrl.gameState.gameOver" class="card-footer m-auto">
     <input type="text" class="form-control" ng-model="$ctrl.guessInput">
-    <button ng-click="$ctrl.submitInput($ctrl.guessInput)" class="btn btn-primary">Guess</button>
+    <button ng-click="$ctrl.submitInput($ctrl.guessInput)" class="btn btn-primary btn-block">Guess</button>
   </div>
-  <div ng-show="$ctrl.gameState.gameOver" class="card-footer">
+  <div ng-show="$ctrl.gameState.gameOver" class="card-footer m-auto">
     <button ng-click="$ctrl.newGame()" class="btn btn-primary">Play Again</button>
   </div>
 </div>
