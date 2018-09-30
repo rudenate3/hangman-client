@@ -4,10 +4,16 @@
   </div>
   <div class="card-body">
     <div class="game">
+      <guess ng-repeat="guess in $ctrl.gameState.guesses" letter="guess"></guess>
+      {{ $ctrl.gameState.guesses}}
       <pre>gameState = {{$ctrl.gameState | json}}</pre>
     </div>
   </div>
-  <div class="card-footer">
-    <button ng-click="$ctrl.submitInput()" class="btn btn-primary">Update</button>
+  <div ng-show="!$ctrl.gameState.gameOver" class="card-footer">
+    <input type="text" class="form-control" ng-model="$ctrl.guessInput">
+    <button ng-click="$ctrl.submitInput($ctrl.guessInput)" class="btn btn-primary">Update</button>
+  </div>
+  <div ng-show="$ctrl.gameState.gameOver" class="card-footer">
+    <button ng-click="$ctrl.newGame()" class="btn btn-primary">Play Again</button>
   </div>
 </div>
