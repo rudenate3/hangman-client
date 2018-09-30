@@ -22,6 +22,10 @@ angular
         url: '/change-password',
         template: '<change-password></change-password>'
       })
+      .state('game', {
+        url: '/game',
+        template: '<game></game>'
+      })
   })
   .config([
     '$locationProvider',

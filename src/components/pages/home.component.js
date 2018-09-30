@@ -1,5 +1,5 @@
 'use strict'
 
 angular.module('hangman').component('home', {
-  template: '<h1>Home</h1>'
+  templateUrl: '/src/components/pages/templates/home.tmpl.html'
 })

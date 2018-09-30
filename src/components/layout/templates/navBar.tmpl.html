@@ -6,9 +6,9 @@
   </button>
 
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-    <ul class="navbar-nav mr-auto">
+    <ul ng-show="$ctrl.isLoggedIn" class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" ui-sref="home" ui-sref-active="active">Home</a>
+        <a class="nav-link" ui-sref="game" ui-sref-active="active">Game</a>
       </li>
     </ul>
     <ul ng-show="!$ctrl.isLoggedIn" class="navbar-nav ml-auto">

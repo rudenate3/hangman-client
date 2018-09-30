@@ -61,7 +61,7 @@ angular
           onSuccess: function(result) {
             $rootScope.loggedIn = true
             $rootScope.$broadcast('authStateChange')
-            $location.path('/').replace()
+            $location.path('/game').replace()
             if (!$rootScope.$$phase) $rootScope.$apply()
           },
           onFailure: function(err) {
