@@ -29,6 +29,11 @@ angular.module('hangman').component('game', {
         }, [])
       this.gameState = game.data.game
       this.guessInput = ''
+      this.imageUrl = `../../../assets/images/${
+        game.data.game.incorrectGuesses
+          ? game.data.game.incorrectGuesses.length
+          : 0
+      }.png`
     }
     this.$onInit = () => {
       Game.playGame().then(game => {
