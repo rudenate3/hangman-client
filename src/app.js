@@ -40,6 +40,12 @@ angular
   .config(function($httpProvider) {
     $httpProvider.interceptors.push('authInterceptor')
   })
+  // .config([
+  //   '$compileProvider',
+  //   function($compileProvider) {
+  //     $compileProvider.debugInfoEnabled(false)
+  //   }
+  // ])
   .factory('authInterceptor', function($rootScope, Auth) {
     return {
       // Add authorization token to headers
