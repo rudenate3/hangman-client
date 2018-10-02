@@ -1,10 +1,11 @@
 const gulp = require('gulp'),
   babel = require('gulp-babel'),
   concat = require('gulp-concat'),
-  templateCache = require('gulp-angular-templatecache')
+  templateCache = require('gulp-angular-templatecache'),
+  runSequence = require('run-sequence')
 
 gulp.task('babel', () => {
-  gulp
+  return gulp
     .src('./src/**/*.js')
     .pipe(
       babel({
@@ -14,9 +15,16 @@ gulp.task('babel', () => {
     .pipe(gulp.dest('./temp/'))
 })
 
+gulp.task('build', () => {
+  runSequence(
+    ['templateCache', 'babel'],
+    ['concat', 'vendor', 'bootstrap', 'images']
+  )
+})
+
 gulp.task('concat', () => {
   return gulp
-    .src(['./src/app.js', './temp/templates.js', './src/**/*.js'])
+    .src(['./temp/app.js', './temp/templates.js', './temp/**/*.js'])
     .pipe(concat('all.js'))
     .pipe(gulp.dest('./dist/'))
 })
