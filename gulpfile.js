@@ -1,6 +1,18 @@
 const gulp = require('gulp'),
+  babel = require('gulp-babel'),
   concat = require('gulp-concat'),
   templateCache = require('gulp-angular-templatecache')
+
+gulp.task('babel', () => {
+  gulp
+    .src('./src/**/*.js')
+    .pipe(
+      babel({
+        presets: ['@babel/env']
+      })
+    )
+    .pipe(gulp.dest('./temp/'))
+})
 
 gulp.task('concat', () => {
   return gulp
