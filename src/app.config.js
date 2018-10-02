@@ -5,5 +5,6 @@
 angular.module('hangman').constant('config', {
   userPoolId: '',
   clientId: '',
-  apiUrl: ''
+  apiUrl: '',
+  imagePath: ''
 })
