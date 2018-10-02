@@ -3,7 +3,7 @@
     History
   </div>
   <div class="card-body">
-    <div ng-repeat="game in $ctrl.games">
+    <div ng-repeat="game in $ctrl.games | orderBy:'-created'">
       <div class="card m-1 text-white" ng-class="{'bg-success': game.win, 'bg-danger': !game.win}">
         <div class="card-header text-center">
           {{game.win ? 'Win' : 'Lose'}}
