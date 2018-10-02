@@ -8,36 +8,33 @@ angular
     $stateProvider
       .state('home', {
         url: '/',
-        template: '<home></home>'
+        component: 'home'
       })
       .state('login', {
         url: '/login',
-        template: '<login></login>'
+        component: 'login'
       })
       .state('register', {
         url: '/register',
-        template: '<register></register>'
+        component: 'register'
       })
       .state('changePassword', {
         url: '/change-password',
-        template: '<change-password></change-password>'
+        component: 'change-password'
       })
       .state('game', {
         url: '/game',
-        template: '<game></game>'
+        component: 'game'
       })
       .state('history', {
         url: '/history',
-        template: '<history></history>'
+        component: 'history'
       })
   })
-  .config([
-    '$locationProvider',
-    $locationProvider => {
-      $locationProvider.html5Mode(true)
-    }
-  ])
-  .config(function($httpProvider) {
+  .config($locationProvider => {
+    $locationProvider.html5Mode(true)
+  })
+  .config($httpProvider => {
     $httpProvider.interceptors.push('authInterceptor')
   })
   // .config([
@@ -46,7 +43,7 @@ angular
   //     $compileProvider.debugInfoEnabled(false)
   //   }
   // ])
-  .factory('authInterceptor', function($rootScope, Auth) {
+  .factory('authInterceptor', ($rootScope, Auth) => {
     return {
       // Add authorization token to headers
       request: function(config) {
