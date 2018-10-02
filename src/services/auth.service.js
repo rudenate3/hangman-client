@@ -20,6 +20,11 @@ angular
       })
     }
 
+    const redirectTo = path => {
+      $location.path(path).replace()
+      if (!$rootScope.$$phase) $rootScope.$apply()
+    }
+
     return {
       register: (email, username, password) => {
         const attribute = {
@@ -40,8 +45,7 @@ angular
           (err, result) => {
             if (err) console.error(err)
             if (result) {
-              $location.path('/login').replace()
-              if (!$rootScope.$$phase) $rootScope.$apply()
+              redirectTo('/login')
             }
           }
         )
@@ -64,8 +68,7 @@ angular
           onSuccess: result => {
             $rootScope.loggedIn = true
             $rootScope.$broadcast('authStateChange')
-            $location.path('/game').replace()
-            if (!$rootScope.$$phase) $rootScope.$apply()
+            redirectTo('/game')
           },
           onFailure: err => {
             console.error(err)
@@ -79,6 +82,7 @@ angular
           $rootScope.loggedIn = false
           $rootScope.$broadcast('authStateChange')
           cognitoUser.signOut()
+          redirectTo('/')
         }
       },
       changePassword: (oldPassword, newPassword) => {
@@ -92,8 +96,7 @@ angular
             (err, result) => {
               if (err) console.error(err)
               if (result) {
-                $location.path('/').replace()
-                if (!$rootScope.$$phase) $rootScope.$apply()
+                redirectTo('/')
               }
             }
           )
