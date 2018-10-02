@@ -5,6 +5,10 @@ angular.module('hangman').component('history', {
   controller: function(Game) {
     this.$onInit = () => {
       Game.getHistory().then(games => {
+        if (!games.data.games) {
+          this.games = null
+          return
+        }
         const updatedGames = games.data.games.map(game => {
           const correctGuesses = [],
             incorrectGuesses = [],
