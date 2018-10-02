@@ -14,7 +14,6 @@ angular.module('hangman').component('game', {
       }
 
       this.gameState = game.data.game
-      this.guessInput = ''
       this.imageUrl = `${config.imagePath}/${
         game.data.game.incorrectGuesses
           ? game.data.game.incorrectGuesses.length
@@ -32,6 +31,7 @@ angular.module('hangman').component('game', {
 
     this.submitInput = guessInput => {
       Game.attemptMove(this.gameState.id, guessInput).then(game => {
+        this.guessInput = ''
         if (game.data.game) createGameState(game)
       })
     }
