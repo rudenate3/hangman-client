@@ -10,7 +10,7 @@
         </div>
       </div>
       <div class="row">
-        <field ng-repeat="letter in $ctrl.correctFields track by $index" letter="letter"></field>
+        <field ng-repeat="letter in $ctrl.gameState.guessed track by $index" letter="letter"></field>
       </div>
       <div class="row">
         <guess ng-repeat="guess in $ctrl.gameState.incorrectGuesses" letter="guess"></guess>
