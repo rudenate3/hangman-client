@@ -9,6 +9,7 @@
           {{game.win ? 'Win' : 'Lose'}}
         </div>
         <div class="card-body">
+          <h2 class="card-title" style="text-transform: capitalize;">{{game.word}}</h2>
           <h3>Correct Guesses: </h3><span class="m-2" ng-repeat="guess in game.correctGuesses">{{guess}}</span>
           <h3>Incorrect Guesses: </h3><span class="m-2" ng-repeat="guess in game.incorrectGuesses">{{guess}}</span>
         </div>
