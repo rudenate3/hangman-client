@@ -19,7 +19,6 @@ As an authenticated user, I should be able to:
 - Start a new game or continue a previously started game
 - Submit a guess
 - View game history
-- View leaderboard
 
 ### Technologies Used
 
